@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bitter" />  <!--for Bitter 字體-->
+    
+    <!--for Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- for my js -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="js/nav_footer.js"></script>
+    <script type="text/javascript" src="js/submit.js"></script>
+
+    <!-- for my css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/banner.css">
+    <style>
+        /*upload button*/
+        label {
+            background-color: #1A63A4;
+            color: white;
+            padding: .6rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        #file-chosen{
+            margin-left: 0.3rem;
+            font-size: 17px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="top">
+        <div class="h-box">
+            <img src="img/AI_LOGO_LAB.png" height="100px" />
+    
+            <nav></nav>
+        </div>
+    </header>
+
+    <!-- banner 主要看 css 裡面 -->
+    <div class="banner">
+        <div class="MidText"><b>Submit To Evaluate</b></div>
+    </div>
+
+
+    <section>
+        <div class="padding"></div>
+        <div class="padding"></div>
+        <p class="title"><b>Offline Evaluation</b></p>
+        <ul style="list-style-type:decimal;">
+            <li>Register a user & team name</li>
+            <li>
+                Prepare your test case answer and name it with result_interactive.txt, the format of result_interactive.txt should be<br>
+                <span class="code">[scenario name]#[variant name]#[variant attribute value] [if collision] [smallest distance]</span>, where<br>
+                <br>
+                <ul style=" list-style-position: inside;">
+                    <!--  list-style-position: inside 是為了讓點點往內層縮 -->
+                    <li>scenario name , variant name and variant attribute value are text that describe the scenario truth,</li>
+                    <li>if collision is a bool indicate if there is a collision in this scenario,</li>
+                    <li>smallest distance is the smallest distance between the ego-car and the interactor during the whole journey.</li>
+                </ul>
+                <br>
+                Here is an example of result_interactive.txt:<br>
+                <div class="code" style="width: 600px;">
+                    10_t3-6_1_b_l_l_1_0#WetNoon#high False 8.193608817278493<br>
+                    10_t3-6_1_b_l_l_1_0#ClearNight#high False 8.170071255258556<br>
+                    10_t3-6_1_b_l_l_1_0#HardRainSunset#low False 8.187130409417815<br>
+                    10_t3-6_1_b_l_l_1_0#MidRainSunset#mid False 8.245623946608797<br>
+                    10_t3-6_1_b_l_l_1_0#WetNight#high False 8.24798449033569<br>
+                    ...
+                </div>
+                <br>
+            </li>
+            <li>Submit result_interactive.txt using the button below, you can give every submission a description to distinguish them.</li>
+        </ul>
+        <label for="actual-btn">Submit File</label> 
+        這邊按下按鈕出現彈出視窗，裡面可以上傳檔案跟寫 description        <!-- 就跟 kaggle 一模一樣就可以了 -->
+        <!-- <input type="file" id="actual-btn" hidden/>
+        <label for="actual-btn">Choose File</label>
+        <span id="file-chosen">No file chosen</span> -->
+        
+
+        <div class="padding"></div>
+        <div class="padding"></div>
+        <p class="title"><b>Submit History</b></p>
+        
+        <p class="context">這邊先暫時放圖片，之後跟後端連接就換成真正的上傳紀錄的比較表格</p>
+        <div style="display: flex;">
+            <img src="img/submit/Untitled (1).png" alt="veg" style="width: 600px; height: 100%;"/>
+            <img src="img/submit/Untitled (2).png" alt="veg" style="width: 500px; height: 100%;"/>
+        </div>
+        <div style="display: flex;">
+            <p class="comment"  style="width: 600px;">The notations P, R, PIC, and FA denote precision, recall, progressive increasing cost, and false alarm rate, respectively.</p>
+            <p class="comment" style="width: 500px;">Scenario-based performance analysis on Ego-Risk Behavior. The notions F, U, RT, LT, LR, LL, C,J denote forward, U-turn, right-turn, left-turn,
+                 lane change right, lane change left, crosswalk and jaywalk, respectively.</p>
+
+        </div>
+
+
+        <div class="padding"></div>
+        <div class="padding"></div>
+        <p class="title"><b>Offline Evaluation</b></p>
+        <p class="context">Coming soon</p>
+
+
+    </section>
+
+
+
+
+    <!--aside-->
+    <aside>
+        <a href="#top">
+            <div class="totop"></div>
+        </a>
+    </aside>
+
+    <div class="padding"></div>
+
+    <!--footer-->
+    <div class="footer-dark"><footer></footer></div>
+
+</body>
+
+</html>

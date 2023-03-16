@@ -1,0 +1,22 @@
+/* totop 就是放在網頁角落，點一下可以跳回最上面的東西*/
+/* aside */
+aside{
+	position:fixed;
+	right:10px;
+	bottom:10px;
+	z-index:100000;
+}
+
+.totop{
+	width:44px;
+	height:44px;
+	background:rgba(255, 190, 10, .5) url(../img/top2x.png) no-repeat;
+	background-size:200%;
+	background-position:0px 0px;
+}
+
+.totop:hover{
+	background:rgba(255, 190, 10, .5) url(../img/top2x.png) no-repeat;
+	background-size:200%;
+	background-position:-44px 0px;
+}

@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('nav.css');
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: 'Times New Roman', 'Noto Serif TC', serif;
+}
+::-moz-selection{ /* for Firefox */
+    color:#000;
+    background: rgb(232, 177, 66);
+}
+
+::selection{
+    color:#000;
+    background: rgb(232, 177, 66);
+}
+
+
+/*header*/
+header{
+	width:100%;
+	background: rgba(255, 255, 255, 1);
+	box-sizing:border-box;
+	margin:auto;
+	height: 100px;
+	position:-webkit-sticky;
+	position:sticky;
+	top: 0;
+	z-index: 2000;
+    border-bottom:solid #00000058 1px;
+}
+.h-box{
+	width: 80%;
+	margin: auto;
+}
+.h-box img{
+	float: left;
+    height: 98px;
+}
+nav{
+	float: right;
+	z-index: 10000;
+}
+
+
+/*banner，動畫可以讓 Earth Friendly 從左邊飄進來*/
+.banner{
+	/* position: relative; */
+	overflow:hidden;
+	text-align:center;
+	vertical-align: bottom; 
+	width:100%;
+	min-width:1200px;
+	/* height:650px; */
+	height:350px;
+	background:url(../img/background2.png) no-repeat;
+	background-size:100%;
+}
+
+#anitext1{
+	padding-top: 100px;
+	font-family: 'Courgette', cursive;
+	color:#FFF;
+    font-size:60px;
+    background-color: #00000064;
+}
+
+@keyframes ant{ /*這邊 ant 是你前面設定的動畫名稱，上面 anitext 有設定的都可以修改*/
+	from{
+		left: 0%;/*根據上面 anitext 設定，最後會定格在 left 10%，往右移*/
+		/*比如你想要左下移動到右上，就可以在這邊在家上 top*/
+	}
+	to {
+		opacity: 1; /*根據上面 anitext 設定，原本是 0，會後變成 1 ，也就是逐漸顯示*/
+	}
+}
+
+
+
+
+
+/****************************************************** section ************************************************/
+section{
+	width:80%;
+	/* min-width:1500px; */
+	margin:auto;
+}
+section .title{
+    font-size: 28px;   
+    margin: 0;
+    text-align:center;
+}
+section .subtitle{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 30px;
+    font-size: 23px;
+    color: #1A63A4;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+section .context{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 30px;
+    font-size: 19px;
+    color: #000000b3;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+section a:link{
+    color: #4C94D9;
+}
+
+section .single_pic{
+    text-align:center;
+}
+section h1{
+	font-size: 23px;
+}
+
+section ul{
+    font-size: 19px;   
+}
+section .code{
+	font-family: monospace;
+	background-color: #d6d5d5;
+	font-size: 17px;
+}
+
+
+
+
+
+
+
+/* aside */
+aside{
+	position:fixed;
+	right:10px;
+	bottom:10px;
+	z-index:100000;
+}
+
+.totop{
+	width:44px;
+	height:44px;
+	background:rgba(255, 190, 10, .5) url(../img/top2x.png) no-repeat;
+	background-size:200%;
+	background-position:0px 0px;
+}
+
+.totop:hover{
+	background:rgba(255, 190, 10, .5) url(../img/top2x.png) no-repeat;
+	background-size:200%;
+	background-position:-44px 0px;
+}
+
+
+/*padding*/
+.padding{
+	clear: both;
+	height: 50px;
+	background-color: #FFF;
+}

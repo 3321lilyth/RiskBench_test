@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bitter" />  <!--for Bitter 字體-->
+    
+    <!--for Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- for my js -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="js/nav_footer.js"></script>
+
+    <!-- for my css -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/banner.css">
+</head>
+
+<body>
+    <header id="top">
+        <div class="h-box">
+            <img src="img/AI_LOGO_LAB.png" height="100px" />
+    
+            <nav></nav>
+        </div>
+    </header>
+
+    <!-- banner 主要看 css 裡面 -->
+    <div class="banner">
+        <div class="MidText"><b>Identification</b></div>
+    </div>
+
+
+    <section>
+        <div class="padding"></div>
+        <div class="padding"></div>
+        <p class="title"><b>The mechanics of the benchmark</b></p>
+        <ul style="list-style-type:decimal;">
+            <li>Get familiar with the task and dataset scenario by reading the <a href="Scenario.html">Scenario Taxonomy and Collection page.</a></li>
+            <li>Get familiar with three metrics of RiskBench. See below this page.</li>
+            <li><a href="#">Register & Sign up to the benchmark</a></li>
+            <li>Follow the step <a href="#">here</a> and Submit your answer (or agent) in the same link.</li>
+            <li>See the result of your agent and leaderboard in <a href="#">result page.</a></li>
+        </ul>
+
+        <div class="padding"></div>
+        <div class="padding"></div>
+
+
+        <p class="title"><b>Risk Assessment Metrics</b></p>
+        <p class="subtitle">This benchmark uses three metrics to evaluate risk assessment algorithms: <br>Risk Localization, Risk Anticipation and Planning Awareness.</p>
+        
+        <div class="padding"></div>
+        <h1><b>1. Risk Localization</b></h1>
+        <div  class="single_pic"><img src="img/identification/Risk Localization.png" alt="" width="650px"></div>
+        <p class="context">A reliable risk assessment algorithm should be able to identify locations of risks. So, for Risk Localization, we follow earlier works to use F1 score to evaluate the performance.  Specifically, </p>
+        <ul>
+            <li>A <b>true positive(TP)</b> is an outcome where the model <i>correctly</i> predicts the <i>positive</i> class.</li>
+            <li>A <b>true negative(TN)</b> is an outcome where the model <i>correctly</i> predicts the <i>negative</i> class.</li>
+            <li>A <b>false positive(FP)</b> is an outcome where the model <i>incorrectly</i> predicts the <i>positive</i> class.</li>
+            <li>A <b>false negative(FN)</b> is an outcome where the model <i>incorrectly</i> predicts the <i>negative</i> class.</li>
+            <li><b>Precision = TP/(TP+FP)</b>, which indicates the proportion of positive identifications that was actually correct.</li>
+            <li><b>Recall = TP/(TP+FN)</b>, which indicates the proportion of actual positives was identified correctly.</li>
+            <li><b>F1 = 2 / (1/ Precision + 1/ Recall)</b>, the harmonic mean of Precision and Recall.</li>
+        </ul>
+        <p class="context">We evaluate models' performance on all the scenario types, and we incorporate the **False Alarm(FA)** Rate for non-interactive scenarios. Specifically, if a model identifies a risk in a Non-interactive scenario, it is a false alarm.</p>
+        
+        <div class="padding"></div>
+        <h1><b>2. Risk Anticipation</b></h1>
+        <div style="display: flex;">
+            <p class="context" style="flex: 10;">
+                For the Risk Anticipation, we design a time-aware metric, call progressive increasing cost(PIC) to evaluate the performance of a model in a risky scenario.
+                This metric is inspired by the intuition that when we try to collect the performance score in a time sequence,
+                the performance should not be weighted equally at each moment.
+                The Progressive Increasing Cost or PIC metric tends to weight more on performance score when a collected score is close to the ground truth accident time point. 
+                Besides, the loss of F1 score (as mentioned previously) is used to stand for the performance score.
+            </p>
+            <img src="img/identification/Risk Anticipation.png" alt="" style="flex: 1; width: 300px; height: 80px;">
+        </div>
+        
+        
+        <div style="display: flex;">
+            <img src="img/identification/Risk Anticipation2.png" alt="" style="flex: 3; width: 100%; height: 240px;">
+            <div style="flex: .5;"></div>
+            <img src="img/identification/Risk Anticipation3.png" alt="" style="flex: 3;  width: 100%; height: 280px;">
+            <div style="flex: .5;"></div>
+            <p class="context" style="flex: 5;">
+                For example, as the picture shows, the ground truth time point is the time frame when the collision occurs in a collision scenario.
+                And we accumulate those weighted f1 loss along the whole pre-crash scene to get an overall performance score.
+            </p>
+        </div>
+
+        <div class="padding"></div>
+        <h1><b>3. Planning Awareness</b></h1>
+        <p class="context">
+            The goal of Planning Awareness is to evaluate if a risk assessment algorithm can facilitate decision-making.
+            <br>Let’s introduce our setting.
+            <br>Assume we have an ideal planner that can interact with traffic participants and unexpected events.  The planner is an end to end driving model, train with BEV semantic segmentation image and output the actions.
+            <br>Therefore we can do some trick to the BEV semantic segmentation image, and planner should have different behaviors.
+        </p>
+        <div  class="single_pic"><img src="img/identification/Planning Awareness.png" alt="" width="700px"></div>
+        <p class="context">
+            Please see the picture. The left one is an original input. The blue car is interacting with red car which is the ground truth interactor. In the middle picture, we mask other objects but  green vehicle. Therefore, ego car can’t see the real interactor  and fall in to the collision event. However, if we can choose the correct vehicle ( the red one) , then we can avoid the collision just like the right picture shows.
+            <br>Based on this insight : if the identified risks are accurate, the planner should plan a path without colliding with the identified risks. In contrast, if the identified risks are inaccurate, the downstream planner would let the ego vehicle fall in a collision or near-collision situation.
+        </p>
+
+    </section>
+
+
+
+
+    <!--aside-->
+    <aside>
+        <a href="#top">
+            <div class="totop"></div>
+        </a>
+    </aside>
+
+    <div class="padding"></div>
+
+    <!--footer-->
+    <div class="footer-dark"><footer></footer></div>
+
+</body>
+
+</html>
